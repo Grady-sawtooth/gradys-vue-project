@@ -12,13 +12,40 @@
         <div class="col-sm-6 col-lg-3 my-2">
           <div class="input-group">
             <input type="number" class="form-control" v-model="amount" />
-            <button @click="addAmount" class="btn btn-primary" type="button" id="button-addon2">
+            <button
+              @click="addAmount(amount)"
+              class="btn btn-primary"
+              type="button"
+              id="button-addon2"
+            >
               Add {{ amount }} to count
             </button>
           </div>
         </div>
         <div class="col-sm-6 col-lg-3 my-2">
           <button @click="count = 0" class="btn btn-secondary">Reset count</button>
+        </div>
+        <!-- multiplaction Button -->
+        <div class="col-sm-12 my-2">
+          <div class="input-group">
+            <input type="number" class="form-control" v-model="y" />
+            <input type="number" class="form-control" v-model="x" />
+            <button @click="multiply" class="btn btn-primary" type="button" id="button-addon2">
+              Multiply
+            </button>
+            <button
+              @click="(x = 0), (y = 0), (z = 0)"
+              class="btn btn-secondary"
+              type="button"
+              id="button-addon2"
+            >
+              reset
+            </button>
+          </div>
+          <button @click="addAmount(z)" class="btn btn-primary" type="button" id="button-addon2">
+            add to count
+          </button>
+          <div v-if="z != 0">{{ z }}</div>
         </div>
       </div>
     </div>
@@ -33,6 +60,7 @@
         content.
       </p>
       <a href="#" class="btn btn-primary">Go somewhere</a>
+      add {{ price }}
     </div>
   </div>
 </template>
@@ -42,7 +70,11 @@ export default {
   data() {
     return {
       count: 0,
-      amount: 0
+      amount: 0,
+      price: ' $10.99',
+      x: 0,
+      y: 0,
+      z: 0
     }
   },
   methods: {
@@ -52,8 +84,11 @@ export default {
     subtract() {
       this.count--
     },
-    addAmount() {
-      this.count = this.count + this.amount
+    addAmount(g) {
+      this.count = this.count + g
+    },
+    multiply() {
+      this.z = this.x * this.y
     }
   }
 }
