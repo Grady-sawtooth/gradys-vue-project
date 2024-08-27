@@ -1,5 +1,6 @@
 <template>
   <div class="container my-4">
+    <List />
     <Introduction msg="Grady's Vue Project" />
     <Counter />
   </div>
